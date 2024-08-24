@@ -1,5 +1,5 @@
 # Algoritmos de ordenamiento:
-* Selection sort
+* [Selection sort](https://github.com/Mati2F/Tarea1Algoco/blob/main/selectionsort.cpp)
 * Mergesort 
 * Quicksort
 * Función de sorting implementada en la biblioteca estándar del lenguaje de programación 
