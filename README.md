@@ -1,7 +1,7 @@
 # Algoritmos de ordenamiento:
 * [Selection sort](https://github.com/Mati2F/Tarea1Algoco/blob/main/selectionsort.cpp)
 * [Mergesort](https://github.com/Mati2F/Tarea1Algoco/blob/main/mergesort.cpp) 
-* Quicksort
+* [Quicksort](https://github.com/Mati2F/Tarea1Algoco/blob/main/quicksort.cpp)
 * Función de sorting implementada en la biblioteca estándar del lenguaje de programación 
 
 # Algoritmos de multiplicación de matrices:
