@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void selectionSort(int arr[], int n)
-{
+unsigned t0,t1;
+
+void selectionSort(int arr[], int n){
     for (int i = 0; i < n - 1; i++)
     {
         int min_idx = i;
@@ -16,11 +17,20 @@ void selectionSort(int arr[], int n)
     }
 }
 
-int main()
-{
-    int arr[] = {64, 25, 12, 22, 11};
-    int n = sizeof(arr) / sizeof(arr[0]);
+void printArray(int arr[], int n){
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+int main(){
+
+    t0 = clock();
+    int n = 5;
+    int arr[n] = {3,5,2,4,1};
     selectionSort(arr, n);
-    cout << "Sorted array: \n";
-    return 0;
+    
+    t1 = clock();
+    double time = (double(t1-t0)/CLOCKS_PER_SEC);
+    cout << "Tiempo de Ejecucion: " << time << endl;
 }
