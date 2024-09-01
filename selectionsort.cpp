@@ -59,20 +59,28 @@ Descripcion: Rellena el arreglo en el que se encuentran los datos del archivo de
 
 int main(){
     ifstream archivo("CasosDePrueba.txt");
+    int n = 1e2, i = 2;
 
     if (!archivo.is_open()){
         cerr << "Error al abrir el archivo" << endl;
         return 1;
     }
 
-    int n = 1e6, arr[n];
-    rellenarArray(arr,n,archivo);
+    while(n != 1e7){
+        int arr[n];
+        archivo.clear();
+        archivo.seekg(0);
 
-    t0 = clock();
-    selectionSort(arr, n);
-    t1 = clock();
+        rellenarArray(arr,n,archivo);
 
-    printArray(arr,n);
-    double time = (double(t1-t0)/CLOCKS_PER_SEC);
-    cout << "Tiempo de Ejecucion: " << time << endl;
+        t0 = clock();
+        selectionSort(arr, n);
+        t1 = clock();
+
+        double time = (double(t1-t0)/CLOCKS_PER_SEC);
+        cout << "con n = 10^" << i << ", El Tiempo de Ejecucion es: " << time << "\n";
+
+        n *= 10;
+        i++;
+    }
 }

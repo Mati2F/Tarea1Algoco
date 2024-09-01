@@ -30,7 +30,7 @@ void quickSort(vector<int>& arr, int low, int high) {
   
     if (low < high) {
         int pi = partition(arr, low, high);
-        
+
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
@@ -75,23 +75,32 @@ Descripcion: Rellena el vector en el que se encuentran los datos del archivo de 
 
 int main() {
     ifstream archivo("CasosDePrueba.txt");
+    int n = 1e2, i = 2;
 
     if (!archivo.is_open()){
         cerr << "Error al abrir el archivo" << endl;
         return 1;
     }
 
-    int n = 1e7;
-    vector<int> arr(n);
-    rellenarVector(arr,archivo);
+    while(n != 1e7){
+        vector<int> arr(n);
+        archivo.clear();
+        archivo.seekg(0);
 
-    t0 = clock();
-    quickSort(arr, 0,n-1);
-    t1 = clock();
+        rellenarVector(arr,archivo);
 
-    printVector(arr);
-    double time = (double(t1-t0)/CLOCKS_PER_SEC);
-    cout << "Tiempo de Ejecucion: " << time << endl;
+        t0 = clock();
+        quickSort(arr, 0,n-1);
+        t1 = clock();
+
+        double time = (double(t1-t0)/CLOCKS_PER_SEC);
+        cout << "con n = 10^" << i << ", El Tiempo de Ejecucion es: " << time << "\n";
+
+        n *= 10;
+        i++;
+    }
+
+    
 
     return 0;
 }

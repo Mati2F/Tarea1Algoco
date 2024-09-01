@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    int n = 1e6;
+    int n = 1e7;
     srand(time(0));
     ofstream archivo_salida("CasosDePrueba.txt");
 
