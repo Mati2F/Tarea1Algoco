@@ -1,22 +1,64 @@
-// C++ program to demonstrate default behaviour of
-// sort() in STL.
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
-    int arr[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
-    int n = sizeof(arr) / sizeof(arr[0]);
+unsigned t0,t1;
 
-    /*Here we take two parameters, the beginning of the
-    array and the length n upto which we want the array to
-    be sorted*/
-    sort(arr, arr + n);
-
-    cout << "\nArray after sorting using "
-            "default sort is : \n";
-    for (int i = 0; i < n; ++i)
+void printArray(int arr[], int n){
+    for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
-
-    return 0;
+    cout << endl;
 }
+
+/*
+Funcion: Print Array
+***
+Descripcion: Imprime de forma provisoria el arreglo en el que se encuentran los datos
+solo para revisar si se está efectuando.
+*/
+
+
+void rellenarArray(int arr[], int &n, ifstream &archivo){
+    int num,i=0;
+    while(archivo >> num){
+        if(i < n){
+            arr[i] = num;
+            i++;
+        }
+    }
+    n = i;
+}
+
+/*
+Funcion: Rellenar Array
+***
+Descripcion: Rellena el arreglo en el que se encuentran los datos del archivo de prueba
+*/
+
+int main(){
+    ifstream archivo("CasosDePrueba.txt");
+
+    if (!archivo.is_open()){
+        cerr << "Error al abrir el archivo" << endl;
+        return 1;
+    }
+
+    int n = 1e6, arr[n];
+    rellenarArray(arr,n,archivo);
+
+    t0 = clock();
+    sort(arr, arr + n);
+    t1 = clock();
+
+    //printArray(arr,n);
+    double time = (double(t1-t0)/CLOCKS_PER_SEC);
+    cout << "Tiempo de Ejecucion: " << time << endl;
+}
+
+/*
+Funcion: sort (dentro del main)
+***
+Descripcion: Realiza el ordenamiento a analizar
+***
+Mejor Caso: O(n log n)
+Peor Caso: O(n log n)
+*/

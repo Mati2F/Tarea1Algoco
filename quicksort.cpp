@@ -26,16 +26,11 @@ Descripcion: Escoge el pivote, recorre los elementos y va ordenando los
 más pequeños a la izquierda.
 */
 
-// The QuickSort function implementation
 void quickSort(vector<int>& arr, int low, int high) {
   
     if (low < high) {
-      
-        // pi is the partition return index of pivot
         int pi = partition(arr, low, high);
-
-        // Recursion calls for smaller elements
-        // and greater or equals elements
+        
         quickSort(arr, low, pi - 1);
         quickSort(arr, pi + 1, high);
     }
