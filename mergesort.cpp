@@ -1,19 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Merges two subarrays of arr[].
-// First subarray is arr[left..mid]
-// Second subarray is arr[mid+1..right]
-void merge(vector<int>& arr, int left, 
-                     int mid, int right)
-{
+unsigned t0,t1;
+
+void merge(vector<int>& arr, int left, int mid, int right){
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    // Create temp vectors
     vector<int> L(n1), R(n2);
 
-    // Copy data to temp vectors L[] and R[]
     for (int i = 0; i < n1; i++)
         L[i] = arr[left + i];
     for (int j = 0; j < n2; j++)
@@ -22,8 +17,6 @@ void merge(vector<int>& arr, int left,
     int i = 0, j = 0;
     int k = left;
 
-    // Merge the temp vectors back 
-    // into arr[left..right]
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
@@ -36,16 +29,12 @@ void merge(vector<int>& arr, int left,
         k++;
     }
 
-    // Copy the remaining elements of L[], 
-    // if there are any
     while (i < n1) {
         arr[k] = L[i];
         i++;
         k++;
     }
 
-    // Copy the remaining elements of R[], 
-    // if there are any
     while (j < n2) {
         arr[k] = R[j];
         j++;
@@ -53,10 +42,13 @@ void merge(vector<int>& arr, int left,
     }
 }
 
-// begin is for left index and end is right index
-// of the sub-array of arr to be sorted
-void mergeSort(vector<int>& arr, int left, int right)
-{
+/*
+Funcion: merge
+***
+Descripcion: Junta las dos listas ordenadas para formar la lista original ordenada.
+*/
+
+void mergeSort(vector<int>& arr, int left, int right){
     if (left >= right)
         return;
 
@@ -66,26 +58,62 @@ void mergeSort(vector<int>& arr, int left, int right)
     merge(arr, left, mid, right);
 }
 
-// Function to print a vector
-void printVector(vector<int>& arr)
-{
+/*
+Funcion: mergeSort
+***
+Descripcion: Realiza el ordenamiento a analizar de forma recursiva, separando el arreglo 
+en mitades y ordenandolas.
+***
+Mejor Caso: O(n log n)
+Peor Caso: O(n log n)
+*/
+
+void printVector(vector<int>& arr){
     for (int i = 0; i < arr.size(); i++)
         cout << arr[i] << " ";
     cout << endl;
 }
 
-// Driver code
-int main()
-{
-    vector<int> arr = { 12, 11, 13, 5, 6, 7 };
-    int n = arr.size();
+/*
+Funcion: Print Array
+***
+Descripcion: Imprime de forma provisoria el arreglo en el que se encuentran los datos
+solo para revisar si se está efectuando.
+*/
 
-    cout << "Given vector is \n";
+void rellenarVector(std::vector<int> &vec, ifstream &archivo) {
+    int num;
+    vec.clear();
+    while (archivo >> num) {
+        vec.push_back(num);
+    }
+}
+
+/*
+Funcion: Rellenar Vector
+***
+Descripcion: Rellena el vector en el que se encuentran los datos del archivo de prueba
+*/
+
+int main(){
+    ifstream archivo("CasosDePrueba.txt");
+
+    if (!archivo.is_open()){
+        cerr << "Error al abrir el archivo" << endl;
+        return 1;
+    }
+
+    int n = 1e7;
+    vector<int> arr(n);
+    rellenarVector(arr,archivo);
+
+    t0 = clock();
+    mergeSort(arr, 0,n-1);
+    t1 = clock();
+
     printVector(arr);
+    double time = (double(t1-t0)/CLOCKS_PER_SEC);
+    cout << "Tiempo de Ejecucion: " << time << endl;
 
-    mergeSort(arr, 0, n - 1);
-
-    cout << "\nSorted vector is \n";
-    printVector(arr);
     return 0;
 }

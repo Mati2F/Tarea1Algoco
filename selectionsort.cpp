@@ -65,7 +65,7 @@ int main(){
         return 1;
     }
 
-    int n = 1e7, arr[n];
+    int n = 1e6, arr[n];
     rellenarArray(arr,n,archivo);
 
     t0 = clock();
