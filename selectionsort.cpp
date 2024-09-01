@@ -3,7 +3,7 @@ using namespace std;
 
 unsigned t0,t1;
 
-void selectionSort(int arr[], int n){
+void selectionSort(vector<int>& arr, int n){
     for (int i = 0; i < n - 1; i++)
     {
         int min_idx = i;
@@ -26,39 +26,35 @@ Mejor Caso: O(n^2)
 Peor Caso: O(n^2)
 */
 
-void printArray(int arr[], int n){
-    for (int i = 0; i < n; i++)
+void printVector(vector<int>& arr){
+    for (int i = 0; i < arr.size(); i++)
         cout << arr[i] << " ";
     cout << endl;
 }
 
 /*
-Funcion: Print Array
+Funcion: Print Vector
 ***
-Descripcion: Imprime de forma provisoria el arreglo en el que se encuentran los datos
+Descripcion: Imprime de forma provisoria el vector en el que se encuentran los datos
 solo para revisar si se está efectuando.
 */
 
-
-void rellenarArray(int arr[], int &n, ifstream &archivo){
-    int num,i=0;
-    while(archivo >> num){
-        if(i < n){
-            arr[i] = num;
-            i++;
-        }
+void rellenarVector(std::vector<int> &vec, ifstream &archivo) {
+    int num;
+    vec.clear();
+    while (archivo >> num) {
+        vec.push_back(num);
     }
-    n = i;
 }
 
 /*
-Funcion: Rellenar Array
+Funcion: Rellenar Vector
 ***
-Descripcion: Rellena el arreglo en el que se encuentran los datos del archivo de prueba
+Descripcion: Rellena el vector en el que se encuentran los datos del archivo de prueba
 */
 
 int main(){
-    ifstream archivo("CasosDePrueba.txt");
+    ifstream archivo("parcialmente_ordenado.txt");
     int n = 1e2, i = 2;
 
     if (!archivo.is_open()){
@@ -67,11 +63,11 @@ int main(){
     }
 
     while(n != 1e7){
-        int arr[n];
+        vector<int> arr(n);
         archivo.clear();
         archivo.seekg(0);
 
-        rellenarArray(arr,n,archivo);
+        rellenarVector(arr,archivo);
 
         t0 = clock();
         selectionSort(arr, n);

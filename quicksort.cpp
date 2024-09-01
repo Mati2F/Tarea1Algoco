@@ -74,7 +74,7 @@ Descripcion: Rellena el vector en el que se encuentran los datos del archivo de 
 */
 
 int main() {
-    ifstream archivo("CasosDePrueba.txt");
+    ifstream archivo("parcialmente_ordenado.txt");
     int n = 1e2, i = 2;
 
     if (!archivo.is_open()){
