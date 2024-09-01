@@ -24,6 +24,12 @@ void rellenarVector(std::vector<int> &vec, ifstream &archivo) {
     }
 }
 
+/*
+Funcion: Rellenar Vector
+***
+Descripcion: Rellena el vector en el que se encuentran los datos del archivo de prueba
+*/
+
 int main(){
     ifstream archivo("inversamente_ordenado.txt");
     int n = 1e2, i = 2;
