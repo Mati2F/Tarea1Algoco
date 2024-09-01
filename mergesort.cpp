@@ -75,9 +75,9 @@ void printVector(vector<int>& arr){
 }
 
 /*
-Funcion: Print Array
+Funcion: Print Vector
 ***
-Descripcion: Imprime de forma provisoria el arreglo en el que se encuentran los datos
+Descripcion: Imprime de forma provisoria el vector en el que se encuentran los datos
 solo para revisar si se está efectuando.
 */
 
