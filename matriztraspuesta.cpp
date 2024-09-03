@@ -84,7 +84,7 @@ int main() {
 
         //cout << "\nMultiplication of given two matrices is:\n";
         //printMatriz(result);
-		cout << "\n" << "con n = "<< i << ", el tiempo de ejecucion es: " << time << "\n";
+		cout << "\n" << "con n = 2^"<< i << ", el tiempo de ejecucion es: " << time << "\n";
 		i++;
     }
 

@@ -29,7 +29,7 @@ void guardarMatriz(ofstream &archivo, const vector<vector<int>> &matriz) {
 }
 
 int main() {
-    int j = 11;
+    int j = 9;
     srand(time(0)); // Inicializar la semilla para generación de números aleatorios
 
     // Archivo para matrices cuadradas

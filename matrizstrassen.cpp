@@ -7,21 +7,24 @@ using namespace std;
 #define ROW_2 4
 #define COL_2 4
 
-void print(string display, vector<vector<int> > matrix,
-		int start_row, int start_column, int end_row,
-		int end_column)
-{
-	cout << endl << display << " =>" << endl;
-	for (int i = start_row; i <= end_row; i++) {
-		for (int j = start_column; j <= end_column; j++) {
-			cout << setw(10);
-			cout << matrix[i][j];
-		}
-		cout << endl;
-	}
-	cout << endl;
-	return;
+unsigned t0,t1;
+
+void printMatriz(const vector<vector<int>>& matriz) {
+    for (const auto& fila : matriz) {
+        for (int elemento : fila) {
+            cout << elemento << "\t";
+        }
+        cout << endl;
+    }
+	cout << "\n";
 }
+
+/*
+Funcion: Print Matriz
+***
+Descripcion: Imprime de forma provisoria la matriz en la que se encuentran los datos
+solo para revisar si se está efectuando.
+*/
 
 vector<vector<int> >
 add_matrix(vector<vector<int> > matrix_A,
@@ -35,6 +38,14 @@ add_matrix(vector<vector<int> > matrix_A,
 				+ (multiplier * matrix_B[i][j]);
 	return matrix_A;
 }
+
+/*
+Funcion: Sumar matriz
+***
+Descripcion: Realiza las sumas que forman parte del algoritmo de Strassen para los elementos
+de la matriz
+*/
+
 
 vector<vector<int> >
 multiply_matrix(vector<vector<int> > matrix_A,
@@ -154,29 +165,61 @@ multiply_matrix(vector<vector<int> > matrix_A,
 	return result_matrix;
 }
 
+/*
+Funcion: Multiplicar matriz
+***
+Descripcion: Realiza la multiplicacion de los elementos calculados
+en el algoritmo original de Strassen.
+***
+Mejor Caso: O(n ^ 2.8074)
+Peor Caso: O(n ^ 2.8074)
+*/
+
 int main()
 {
-	vector<vector<int> > matrix_A = { { 1, 1, 1, 1 },
-									{ 2, 2, 2, 2 },
-									{ 3, 3, 3, 3 },
-									{ 2, 2, 2, 2 } };
+	int i = 1;
+    ifstream inputFile("matriz_cuadrada.txt");
 
-	print("Array A", matrix_A, 0, 0, ROW_1 - 1, COL_1 - 1);
+    if (!inputFile) {
+        cerr << "Error al abrir el archivo" << endl;
+        return 1;
+    }
 
-	vector<vector<int> > matrix_B = { { 1, 1, 1, 1 },
-									{ 2, 2, 2, 2 },
-									{ 3, 3, 3, 3 },
-									{ 2, 2, 2, 2 } };
+    int R1, C1, R2, C2;
+    while (inputFile >> R1 >> C1 >> R2 >> C2) {
+        vector<vector<int>> mat1(R1, vector<int>(C1));
+        vector<vector<int>> mat2(R2, vector<int>(C2));
 
-	print("Array B", matrix_B, 0, 0, ROW_2 - 1, COL_2 - 1);
+        for (int i = 0; i < R1; ++i) {
+            for (int j = 0; j < C1; ++j) {
+                inputFile >> mat1[i][j];
+            }
+        }
 
-	vector<vector<int> > result_matrix(
-		multiply_matrix(matrix_A, matrix_B));
+        for (int i = 0; i < R2; ++i) {
+            for (int j = 0; j < C2; ++j) {
+                inputFile >> mat2[i][j];
+            }
+        }
 
-	print("Result Array", result_matrix, 0, 0, ROW_1 - 1,
-		COL_2 - 1);
+        //cout << "\nMatrix 1:\n";
+        //printMatriz(mat1);
+
+        //cout << "\nMatrix 2:\n";
+        //printMatriz(mat2);
+
+        t0 = clock();
+        vector<vector<int>> result = multiply_matrix(mat1, mat2);
+		t1 = clock();
+
+		double time = (double(t1-t0)/CLOCKS_PER_SEC);
+
+        //cout << "\nMultiplication of given two matrices is:\n";
+        //printMatriz(result);
+		cout << "\n" << "con n = 2^"<< i << ", el tiempo de ejecucion es: " << time << "\n";
+		i++;
+    }
+
+    inputFile.close();
+    return 0;
 }
-
-// Time Complexity: T(N) = 7T(N/2) + O(N^2) => O(N^Log7)
-// which is approximately O(N^2.8074) Code Contributed By:
-// lucasletum
