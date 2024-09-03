@@ -6,5 +6,5 @@
 
 # Algoritmos de multiplicación de matrices:
 * [Algoritmo iterativo cúbico tradicional](https://github.com/Mati2F/Tarea1Algoco/blob/main/matriztradicional.cpp)
-* Algoritmo iterativo cúbico optimizado para mantener la localidad de los datos (transponiendo la segunda matriz)
+* [Algoritmo iterativo cúbico optimizado para mantener la localidad de los datos (transponiendo la segunda matriz)](https://github.com/Mati2F/Tarea1Algoco/blob/main/matriztraspuesta.cpp)
 * Algoritmo de Strassen 
