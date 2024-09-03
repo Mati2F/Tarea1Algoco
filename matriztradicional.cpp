@@ -5,7 +5,6 @@ using namespace std;
 
 unsigned t0,t1;
 
-// Función para imprimir una matriz
 void printMatriz(const vector<vector<int>>& matriz) {
     for (const auto& fila : matriz) {
         for (int elemento : fila) {
@@ -15,7 +14,13 @@ void printMatriz(const vector<vector<int>>& matriz) {
     }
 }
 
-// Función para multiplicar matrices
+/*
+Funcion: Print Matriz
+***
+Descripcion: Imprime de forma provisoria la matriz en la que se encuentran los datos
+solo para revisar si se está efectuando.
+*/
+
 vector<vector<int>> mulMat(const vector<vector<int>>& mat1, const vector<vector<int>>& mat2, int R1, int C2, int R2) {
     vector<vector<int>> rslt(R1, vector<int>(C2, 0));
 
@@ -30,9 +35,18 @@ vector<vector<int>> mulMat(const vector<vector<int>>& mat1, const vector<vector<
     return rslt;
 }
 
+/*
+Funcion: Multiplicar matriz
+***
+Descripcion: Realiza la multiplicacion tradicional de matrices.
+***
+Mejor Caso: O(n^3)
+Peor Caso: O(n^3)
+*/
+
 int main() {
 	int i = 1;
-    ifstream inputFile("matriz_cuadrada.txt"); // Cambiar a "matriz_nocuadrada.txt" para no cuadradas
+    ifstream inputFile("matriz_cuadrada.txt");
 
     if (!inputFile) {
         cerr << "Error al abrir el archivo" << endl;
@@ -40,28 +54,22 @@ int main() {
     }
 
     int R1, C1, R2, C2;
-
-    // Leer múltiples matrices hasta llegar al final del archivo
     while (inputFile >> R1 >> C1 >> R2 >> C2) {
-        // Crear matrices dinámicas utilizando vector
         vector<vector<int>> mat1(R1, vector<int>(C1));
         vector<vector<int>> mat2(R2, vector<int>(C2));
 
-        // Leer la primera matriz
         for (int i = 0; i < R1; ++i) {
             for (int j = 0; j < C1; ++j) {
                 inputFile >> mat1[i][j];
             }
         }
 
-        // Leer la segunda matriz
         for (int i = 0; i < R2; ++i) {
             for (int j = 0; j < C2; ++j) {
                 inputFile >> mat2[i][j];
             }
         }
 
-        // Imprimir las matrices originales
         //cout << "\nMatrix 1:\n";
         //printMatriz(mat1);
 
