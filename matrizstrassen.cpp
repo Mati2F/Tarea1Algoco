@@ -23,15 +23,17 @@ void print(string display, vector<vector<int> > matrix,
 	return;
 }
 
-void add_matrix(vector<vector<int> > matrix_A,
-				vector<vector<int> > matrix_B,
-				vector<vector<int> >& matrix_C,
-				int split_index)
+vector<vector<int> >
+add_matrix(vector<vector<int> > matrix_A,
+		vector<vector<int> > matrix_B, int split_index,
+		int multiplier = 1)
 {
 	for (auto i = 0; i < split_index; i++)
 		for (auto j = 0; j < split_index; j++)
-			matrix_C[i][j]
-				= matrix_A[i][j] + matrix_B[i][j];
+			matrix_A[i][j]
+				= matrix_A[i][j]
+				+ (multiplier * matrix_B[i][j]);
+	return matrix_A;
 }
 
 vector<vector<int> >
@@ -61,14 +63,6 @@ multiply_matrix(vector<vector<int> > matrix_A,
 		int split_index = col_1 / 2;
 
 		vector<int> row_vector(split_index, 0);
-		vector<vector<int> > result_matrix_00(split_index,
-											row_vector);
-		vector<vector<int> > result_matrix_01(split_index,
-											row_vector);
-		vector<vector<int> > result_matrix_10(split_index,
-											row_vector);
-		vector<vector<int> > result_matrix_11(split_index,
-											row_vector);
 
 		vector<vector<int> > a00(split_index, row_vector);
 		vector<vector<int> > a01(split_index, row_vector);
@@ -93,18 +87,36 @@ multiply_matrix(vector<vector<int> > matrix_A,
 									[j + split_index];
 			}
 
-		add_matrix(multiply_matrix(a00, b00),
-				multiply_matrix(a01, b10),
-				result_matrix_00, split_index);
-		add_matrix(multiply_matrix(a00, b01),
-				multiply_matrix(a01, b11),
-				result_matrix_01, split_index);
-		add_matrix(multiply_matrix(a10, b00),
-				multiply_matrix(a11, b10),
-				result_matrix_10, split_index);
-		add_matrix(multiply_matrix(a10, b01),
-				multiply_matrix(a11, b11),
-				result_matrix_11, split_index);
+		vector<vector<int> > p(multiply_matrix(
+			a00, add_matrix(b01, b11, split_index, -1)));
+		vector<vector<int> > q(multiply_matrix(
+			add_matrix(a00, a01, split_index), b11));
+		vector<vector<int> > r(multiply_matrix(
+			add_matrix(a10, a11, split_index), b00));
+		vector<vector<int> > s(multiply_matrix(
+			a11, add_matrix(b10, b00, split_index, -1)));
+		vector<vector<int> > t(multiply_matrix(
+			add_matrix(a00, a11, split_index),
+			add_matrix(b00, b11, split_index)));
+		vector<vector<int> > u(multiply_matrix(
+			add_matrix(a01, a11, split_index, -1),
+			add_matrix(b10, b11, split_index)));
+		vector<vector<int> > v(multiply_matrix(
+			add_matrix(a00, a10, split_index, -1),
+			add_matrix(b00, b01, split_index)));
+
+		vector<vector<int> > result_matrix_00(add_matrix(
+			add_matrix(add_matrix(t, s, split_index), u,
+					split_index),
+			q, split_index, -1));
+		vector<vector<int> > result_matrix_01(
+			add_matrix(p, q, split_index));
+		vector<vector<int> > result_matrix_10(
+			add_matrix(r, s, split_index));
+		vector<vector<int> > result_matrix_11(add_matrix(
+			add_matrix(add_matrix(t, p, split_index), r,
+					split_index, -1),
+			v, split_index, -1));
 
 		for (auto i = 0; i < split_index; i++)
 			for (auto j = 0; j < split_index; j++) {
@@ -119,10 +131,6 @@ multiply_matrix(vector<vector<int> > matrix_A,
 					= result_matrix_11[i][j];
 			}
 
-		result_matrix_00.clear();
-		result_matrix_01.clear();
-		result_matrix_10.clear();
-		result_matrix_11.clear();
 		a00.clear();
 		a01.clear();
 		a10.clear();
@@ -131,6 +139,17 @@ multiply_matrix(vector<vector<int> > matrix_A,
 		b01.clear();
 		b10.clear();
 		b11.clear();
+		p.clear();
+		q.clear();
+		r.clear();
+		s.clear();
+		t.clear();
+		u.clear();
+		v.clear();
+		result_matrix_00.clear();
+		result_matrix_01.clear();
+		result_matrix_10.clear();
+		result_matrix_11.clear();
 	}
 	return result_matrix;
 }
@@ -158,5 +177,6 @@ int main()
 		COL_2 - 1);
 }
 
-// Time Complexity: O(n^3)
-// Code Contributed By: lucasletum
+// Time Complexity: T(N) = 7T(N/2) + O(N^2) => O(N^Log7)
+// which is approximately O(N^2.8074) Code Contributed By:
+// lucasletum
