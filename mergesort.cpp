@@ -96,7 +96,7 @@ Descripcion: Rellena el vector en el que se encuentran los datos del archivo de 
 */
 
 int main(){
-    ifstream archivo("parcialmente_ordenado.txt");
+    ifstream archivo("inversamente_ordenado.txt");
     int n = 1e2, i = 2;
 
     if (!archivo.is_open()){
