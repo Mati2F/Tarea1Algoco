@@ -15,6 +15,6 @@
 * [Matrices](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdepruebamatriz.cpp)
 ## archivos creados:
 * parcialmente ordenado
-* numeros aleatorios
+* [numeros aleatorios](https://github.com/Mati2F/Tarea1Algoco/blob/main/numeros_aleatorios.txt)
 * [inversamente ordenado](https://github.com/Mati2F/Tarea1Algoco/blob/main/inversamente_ordenado.txt)
 * matriz cuadrada
