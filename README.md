@@ -16,5 +16,5 @@
 ## archivos creados:
 * parcialmente ordenado
 * numeros aleatorios
-* inversamente ordenado
+* [inversamente ordenado](https://github.com/Mati2F/Tarea1Algoco/blob/main/inversamente_ordenado.txt)
 * matriz cuadrada
