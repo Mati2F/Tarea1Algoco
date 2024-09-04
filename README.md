@@ -10,10 +10,10 @@
 * [Algoritmo de Strassen](https://github.com/Mati2F/Tarea1Algoco/blob/main/matrizstrassen.cpp) 
 
 # Casos de Prueba:
-## codigo:
+## Código:
 * [Sorting](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdeprueba.cpp)
 * [Matrices](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdepruebamatriz.cpp)
-## archivos creados:
+## Archivos creados:
 * [parcialmente ordenado](https://github.com/Mati2F/Tarea1Algoco/blob/main/parcialmente_ordenado.txt)
 * [numeros aleatorios](https://github.com/Mati2F/Tarea1Algoco/blob/main/numeros_aleatorios.txt)
 * [inversamente ordenado](https://github.com/Mati2F/Tarea1Algoco/blob/main/inversamente_ordenado.txt)
