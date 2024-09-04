@@ -9,6 +9,12 @@
 * [Algoritmo iterativo cúbico optimizado para mantener la localidad de los datos (transponiendo la segunda matriz)](https://github.com/Mati2F/Tarea1Algoco/blob/main/matriztraspuesta.cpp)
 * [Algoritmo de Strassen](https://github.com/Mati2F/Tarea1Algoco/blob/main/matrizstrassen.cpp) 
 
-## Casos de Prueba:
+# Casos de Prueba:
+## codigo:
 * [Sorting](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdeprueba.cpp)
-* Matrices
+* [Matrices](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdepruebamatriz.cpp)
+## archivo:
+* parcialmente ordenado
+* numeros aleatorios
+* inversamente ordenado
+* matriz cuadrada
