@@ -1,24 +1,24 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <math.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-// Función para generar una matriz aleatoria
 vector<vector<int>> generarMatriz(int filas, int columnas) {
     vector<vector<int>> matriz(filas, vector<int>(columnas));
     for (int i = 0; i < filas; ++i) {
         for (int j = 0; j < columnas; ++j) {
-            matriz[i][j] = rand() % 100; // Números aleatorios entre 0 y 99
+            matriz[i][j] = rand() % 100;
         }
     }
     return matriz;
 }
 
-// Función para guardar una matriz en un archivo
+/*
+Funcion: Generar matriz
+***
+Descripcion: genera una matriz aleatoria del tamaño de filas x colummas ingresadas
+como parametro, con valores entre el 0 y el 100.
+*/
+
 void guardarMatriz(ofstream &archivo, const vector<vector<int>> &matriz) {
     for (const auto &fila : matriz) {
         for (const auto &elem : fila) {
@@ -28,15 +28,20 @@ void guardarMatriz(ofstream &archivo, const vector<vector<int>> &matriz) {
     }
 }
 
+/*
+Funcion: Guardar matriz
+***
+Descripcion: Escribe una matriz en un archivo, ambos pasados como parametros.
+*/
+
+
 int main() {
     int j = 9;
-    srand(time(0)); // Inicializar la semilla para generación de números aleatorios
+    srand(time(0));
 
-    // Archivo para matrices cuadradas
     ofstream archivoCuadrada("matriz_cuadrada.txt");
     
-    // Generar y guardar matrices cuadradas
-    for (int tamano = 2; tamano <= pow(2,j); tamano*=2) { // Ejemplo con tamaños de 2x2 a 5x5
+    for (int tamano = 2; tamano <= pow(2,j); tamano*=2) {
         int R1 = tamano, C1 = tamano;
         int R2 = tamano, C2 = tamano;
         

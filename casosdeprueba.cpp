@@ -1,14 +1,9 @@
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <ctime>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 int main() {
-    int n = 1e7;
+    int n = 1e6;
     srand(time(0));
 
     // Archivo 1: Datos Aleatorios
@@ -36,10 +31,8 @@ int main() {
         parcialmente_ordenado[i] = rand();
     }
 
-    // Ordenar parcialmente el vector
     sort(parcialmente_ordenado.begin(), parcialmente_ordenado.begin() + n / 2);
 
-    // Escribir en el archivo
     for (int i = 0; i < n; ++i) {
         archivo_parcial << parcialmente_ordenado[i] << endl;
     }
@@ -57,15 +50,14 @@ int main() {
         inversamente_ordenado[i] = rand();
     }
 
-    // Ordenar el vector de manera descendente
     sort(inversamente_ordenado.begin(), inversamente_ordenado.end(), greater<int>());
 
-    // Escribir en el archivo
     for (int i = 0; i < n; ++i) {
         archivo_inverso << inversamente_ordenado[i] << endl;
     }
     archivo_inverso.close();
 
+    cout << "Archivos generados exitosamente.\n";
     return 0;
 }
 
