@@ -13,7 +13,7 @@
 ## codigo:
 * [Sorting](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdeprueba.cpp)
 * [Matrices](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdepruebamatriz.cpp)
-## archivo:
+## archivos creados:
 * parcialmente ordenado
 * numeros aleatorios
 * inversamente ordenado
