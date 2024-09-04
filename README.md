@@ -10,5 +10,5 @@
 * [Algoritmo de Strassen](https://github.com/Mati2F/Tarea1Algoco/blob/main/matrizstrassen.cpp) 
 
 ## Casos de Prueba:
-* Sorting
+* [Sorting](https://github.com/Mati2F/Tarea1Algoco/blob/main/casosdeprueba.cpp)
 * Matrices
