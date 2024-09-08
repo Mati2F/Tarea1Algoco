@@ -1,3 +1,5 @@
+Matías Fernández ; 202273506-6 
+
 # Algoritmos de ordenamiento:
 * [Selection sort](https://github.com/Mati2F/Tarea1Algoco/blob/main/selectionsort.cpp)
 * [Mergesort](https://github.com/Mati2F/Tarea1Algoco/blob/main/mergesort.cpp) 
