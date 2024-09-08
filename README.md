@@ -1,4 +1,4 @@
-Matías Fernández ; 202273506-6 
+_Nombre_: Matías Fernández ; _Rol_: 202273506-6 
 
 # Algoritmos de ordenamiento:
 * [Selection sort](https://github.com/Mati2F/Tarea1Algoco/blob/main/selectionsort.cpp)
